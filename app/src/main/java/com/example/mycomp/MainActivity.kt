@@ -45,6 +45,7 @@ fun Greeting(context: Context) {
    /// Text(text = "Hello")
     App(context)
 }
+
 @Composable
 fun App(context: Context) {
     val navController = rememberNavController()
@@ -61,36 +62,30 @@ fun App(context: Context) {
             AboutScreen(context)
         }
 
-        ///  pubilc void add (int a , int b, int c){
-        //   int c = a;}
-
-        composable("detail/{itemId}/{itemId2}/{abc}") {
+        composable("detail/{itemId}/{itemId2}/{abc}/{hi}") {
                 backStackEntry ->
             val itemId = backStackEntry.arguments?.getString("itemId")
             val itemId2 = backStackEntry.arguments?.getString("itemId2")
             val s1 = backStackEntry.arguments?.getString("abc")
-            DetailScreen(itemId = itemId, itemId2 = itemId2, xyz = s1)
+            DetailScreen(itemId = itemId, itemId2 = itemId2, xyz = s1, hh = "some")
         }
     }
 }
 
 @Composable
-fun DetailScreen(itemId: String?, itemId2: String?, xyz: String?) {
+fun DetailScreen(itemId: String?, itemId2: String?, xyz: String?,hh:String?) {
 
     Column(Modifier.fillMaxSize()) {
-        Text("Item ID: $itemId \n $itemId2 \n $xyz")
-
-
+        Text("Item ID: $itemId \n $itemId2 \n $xyz \n $hh")
     }
-
 }
-
 
 @Composable
 fun HomeScreen(navController: NavController) {
     Column {
         Button(
-            onClick = { navController.navigate("detail/ranjith/chennai/android") }
+            onClick = {
+                navController.navigate("detail/ranjith/chennai/android/housing") }
         ) {
             Text("Go to Detail Screen")
         }
